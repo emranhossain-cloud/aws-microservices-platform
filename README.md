@@ -30,3 +30,17 @@ Public subnets:
 Private subnets:
 - Application servers
 - Databases
+## Internet Gateway and Public Routing
+
+To enable internet access for public resources, an Internet Gateway and public route table were configured.
+
+### Components
+
+- Internet Gateway
+- Public Route Table
+- Route to `0.0.0.0/0`
+- Public Subnet Associations
+
+### Purpose
+
+Allows internet-facing services such as load balancers and NAT gateways to communicate with external networks.
