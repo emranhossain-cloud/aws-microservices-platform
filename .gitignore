@@ -24,3 +24,24 @@ crash.log
 
 # Logs
 *.log
+
+
+# dependencies
+node_modules/
+
+# environment variables
+.env
+
+# build artifacts
+dist/
+build/
+
+# logs
+*.log
+
+# terraform
+*.tfstate
+*.tfstate.backup
+
+# OS files
+.DS_Store
