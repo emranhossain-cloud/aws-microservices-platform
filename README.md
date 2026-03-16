@@ -101,3 +101,60 @@ The Internet Gateway allows resources in **public subnets** to communicate with 
 A dedicated **public route table** was created to manage internet traffic for public subnets.
 
 ### Route Configuration
+## Phase 3.2 — First Microservice + Docker Container
+
+In this phase, the first backend microservice was implemented and containerized.
+
+### Completed work
+- Initialized a standalone Node.js microservice in `services/user-service`
+- Installed Express
+- Created API endpoints:
+  - `GET /health`
+  - `GET /users`
+- Added a `start` script in `package.json`
+- Created a service-specific `Dockerfile`
+- Built Docker image:
+  - `user-service:v1`
+- Ran the service in a container
+- Verified the service with Docker and curl
+
+### Commands used
+```bash
+npm init -y
+npm install express
+npm start
+docker build -t user-service:v1 .
+docker run -d -p 3001:3001 --name user-service-container user-service:v1
+docker ps
+curl http://localhost:3001/health
+docker logs user-service-container
+docker stop user-service-container
+docker rm user-service-container
+
+
+
+## Technical notes for docs/
+
+```markdown
+# Phase 3.2 Technical Notes
+
+## Objective
+Build and containerize the first microservice in the platform.
+
+## What was built
+- A Node.js + Express microservice named `user-service`
+- A health endpoint for operational checks
+- A sample `/users` endpoint
+- A Docker image for isolated packaging and runtime
+
+## Why it matters
+Containerization ensures:
+- consistency across environments
+- easier CI/CD automation
+- portability to ECS, EKS, and Kubernetes
+- cleaner microservice deployment boundaries
+
+## Operational validation
+- verified image creation with `docker images`
+- verified running container with `docker ps`
+- verified API response with `curl`
