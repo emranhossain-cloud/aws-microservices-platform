@@ -158,3 +158,35 @@ Containerization ensures:
 - verified image creation with `docker images`
 - verified running container with `docker ps`
 - verified API response with `curl`
+
+## Phase 3.3 — Add Product Service + Docker Compose
+
+In this phase, the platform was expanded into a multi-service backend environment.
+
+### Completed work
+- Built a second microservice: `product-service`
+- Added API endpoints:
+  - `GET /health`
+  - `GET /products`
+- Created a `Dockerfile` for `product-service`
+- Added root `docker-compose.yml`
+- Used Docker Compose to run:
+  - `user-service`
+  - `product-service`
+- Verified both services with curl and Docker logs
+
+### Services and ports
+- `user-service` → `3001`
+- `product-service` → `3002`
+
+### Commands used
+```bash
+docker build -t product-service:v1 .
+docker compose up -d
+docker ps
+curl http://localhost:3001/health
+curl http://localhost:3002/health
+curl http://localhost:3001/users
+curl http://localhost:3002/products
+docker compose logs
+docker compose down
