@@ -190,3 +190,36 @@ curl http://localhost:3001/users
 curl http://localhost:3002/products
 docker compose logs
 docker compose down
+
+## Phase 3.4 — API Gateway Service
+
+In this phase, an API Gateway was added as the central access layer for backend services.
+
+### Completed work
+- Built `api-gateway` using Node.js, Express, and Axios
+- Added endpoints:
+  - `GET /health`
+  - `GET /users`
+  - `GET /products`
+- Configured gateway to forward requests to:
+  - `user-service`
+  - `product-service`
+- Added `api-gateway` to `docker-compose.yml`
+- Used Docker Compose networking for service-to-service communication
+- Verified gateway routing through localhost port `3000`
+
+### Services and ports
+- `api-gateway` → `3000`
+- `user-service` → `3001`
+- `product-service` → `3002`
+
+### Commands used
+```bash
+npm init -y
+npm install express axios
+docker compose up -d --build
+curl http://localhost:3000/health
+curl http://localhost:3000/users
+curl http://localhost:3000/products
+docker compose logs api-gateway
+docker compose down
