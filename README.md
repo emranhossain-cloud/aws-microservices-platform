@@ -223,3 +223,28 @@ curl http://localhost:3000/users
 curl http://localhost:3000/products
 docker compose logs api-gateway
 docker compose down
+
+# 🚀 Phase 4.1 — Kubernetes Cluster Setup (K3s on AWS EC2)
+
+## 📌 Overview
+In this phase, I set up a lightweight Kubernetes cluster using K3s on an AWS EC2 instance to enable orchestration of containerized microservices.
+
+## ⚙️ Environment
+- AWS EC2 (Ubuntu 22.04)
+- Kubernetes (K3s)
+- kubectl
+- Local environment: WSL (Ubuntu)
+
+## 🔐 Security Group Configuration
+- SSH (22)
+- HTTP (80)
+- Custom TCP (6443 — Kubernetes API)
+
+> Note: Port 6443 is open for learning purposes only.
+
+## 🔑 SSH Access
+```bash
+cp /mnt/c/Users/emran/Desktop/projects/aws-microservices-platform.pem ~/.ssh/
+chmod 400 ~/.ssh/aws-microservices-platform.pem
+
+ssh -i ~/.ssh/aws-microservices-platform.pem ubuntu@<EC2-PUBLIC-IP>
