@@ -248,3 +248,13 @@ cp /mnt/c/Users/emran/Desktop/projects/aws-microservices-platform.pem ~/.ssh/
 chmod 400 ~/.ssh/aws-microservices-platform.pem
 
 ssh -i ~/.ssh/aws-microservices-platform.pem ubuntu@<EC2-PUBLIC-IP>
+
+### Phase 4.2 - Docker Image Push
+
+Tagged and pushed microservices to Docker Hub:
+
+- aws-microservices-platform-api-gateway
+- aws-microservices-platform-product-service
+- aws-microservices-platform-user-service
+
+Each service is now available for Kubernetes deployment.
