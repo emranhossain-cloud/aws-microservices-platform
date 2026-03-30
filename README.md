@@ -214,7 +214,7 @@ In this phase, an API Gateway was added as the central access layer for backend 
 - `product-service` → `3002`
 
 ### Commands used
-```bash
+bash
 npm init -y
 npm install express axios
 docker compose up -d --build
@@ -258,3 +258,19 @@ Tagged and pushed microservices to Docker Hub:
 - aws-microservices-platform-user-service
 
 Each service is now available for Kubernetes deployment.
+
+## EC2 Recovery Note
+
+During Kubernetes node setup, the initial EC2 instance entered a degraded state with a failed instance status check. Because this was a lab/portfolio environment, I followed an infrastructure-rebuild approach instead of deep manual repair.
+
+### Recovery action
+- Terminated unhealthy EC2 instance
+- Launched a fresh Ubuntu EC2 instance
+- Reapplied required inbound rules:
+  - SSH (22)
+  - HTTP (80)
+  - Kubernetes API (6443)
+  - NodePort range (30000-32767)
+
+### Reason
+Rebuilding infrastructure quickly is often the most efficient path in non-production environments and reflects good infrastructure-as-code thinking.
