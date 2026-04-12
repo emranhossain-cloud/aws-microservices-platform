@@ -302,3 +302,39 @@ kubectl get svc
 - Created Deployment (2 replicas)
 - Created ClusterIP service
 - Verified running pods and internal access
+
+
+## Phase 4.2 — Backend Microservices Deployment on Kubernetes
+
+In this phase, I deployed a multi-service backend architecture to a K3s cluster running on AWS EC2.
+
+### Services deployed
+- API Gateway
+- user-service
+- product-service
+
+### Kubernetes design
+- API Gateway exposed externally with `NodePort`
+- user-service exposed internally with `ClusterIP`
+- product-service exposed internally with `ClusterIP`
+
+### Port architecture
+- API Gateway container: `3000`
+- user-service container: `3001`
+- product-service container: `3002`
+- Internal service ports:
+  - `user-service:5000`
+  - `product-service:5000`
+- External access:
+  - `api-gateway-service:30007`
+
+### Verified endpoints
+- `/health`
+- `/users`
+- `/products`
+
+### Example access
+```text
+http://<EC2-PUBLIC-IP>:30007/health
+http://<EC2-PUBLIC-IP>:30007/users
+http://<EC2-PUBLIC-IP>:30007/products
