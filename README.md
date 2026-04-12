@@ -274,3 +274,14 @@ During Kubernetes node setup, the initial EC2 instance entered a degraded state 
 
 ### Reason
 Rebuilding infrastructure quickly is often the most efficient path in non-production environments and reflects good infrastructure-as-code thinking.
+
+
+### Cluster Validation
+
+After installing K3s, core Kubernetes system components were verified:
+
+- coredns: Running
+- local-path-provisioner: Running
+- metrics-server: Running
+
+A default Traefik install job showed an error, but this did not block the project because the current deployment approach uses NodePort instead of Ingress.
