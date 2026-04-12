@@ -285,3 +285,15 @@ After installing K3s, core Kubernetes system components were verified:
 - metrics-server: Running
 
 A default Traefik install job showed an error, but this did not block the project because the current deployment approach uses NodePort instead of Ingress.
+
+
+### User Service Deployment
+
+Deployed user-service using:
+
+- Deployment (2 replicas)
+- ClusterIP service
+
+Verified using:
+kubectl get pods
+kubectl get svc
