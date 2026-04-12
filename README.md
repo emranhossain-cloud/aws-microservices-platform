@@ -297,3 +297,8 @@ Deployed user-service using:
 Verified using:
 kubectl get pods
 kubectl get svc
+### User Service Deployment
+
+- Created Deployment (2 replicas)
+- Created ClusterIP service
+- Verified running pods and internal access
